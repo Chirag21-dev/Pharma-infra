@@ -80,4 +80,12 @@ jobs:
         run: terraform fmt -check -recursive
         continue-on-error: true
 
+      - name: Terraform Plan
+        id: plan
+        run: |
+          terraform plan \
+          -out=tfplan \
+            -no-color
+        continue-on-error: true
+
       # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
