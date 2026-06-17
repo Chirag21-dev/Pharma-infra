@@ -9,7 +9,7 @@ data "aws_caller_identity" "current" {}
 module "vpc" {
   source = "../../modules/vpc"
 
-  project               = local.project
+  project               = local.project 
   env                   = local.env
   region                = local.region
   vpc_cidr              = "10.0.0.0/16"
