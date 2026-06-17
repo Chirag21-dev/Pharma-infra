@@ -88,4 +88,12 @@ jobs:
             -no-color
         continue-on-error: true
 
+      - name: Upload plan file
+        if: steps.plan.outcome == 'success'
+        uses: actions/upload-artifact@v6
+        with:
+          name: tfplan
+          path: envs/dev/tfplan
+          retention-days: 1
+
       # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
