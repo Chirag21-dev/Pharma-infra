@@ -90,7 +90,7 @@ jobs:
           terraform plan \
           -out=tfplan \
             -no-color
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Upload plan file
         if: steps.plan.outcome == 'success'
