@@ -130,4 +130,17 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
+      - name: Download plan file
+        uses: actions/download-artifact@v7
+        with:
+          name: tfplan
+          path: envs/dev
+
+      - name: Terraform Apply
+        run: |
+          terraform apply \
+            -auto-approve \
+            -no-color \
+            tfplan
+
       # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
